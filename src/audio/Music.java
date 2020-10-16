@@ -2,9 +2,12 @@ package audio;
 
 import app.Game;
 import enums.StateSound;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,71 +17,72 @@ import java.io.InputStream;
  */
 public class Music {
 
-    public static AudioStream audioStream;
+    public static Clip clip;
 
-    public static void music() throws IOException {
+    public static void music() throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         String gongFile = "./resources/audio/Forest_Night.wav";
-        InputStream in = new FileInputStream(gongFile);
-        audioStream = new AudioStream(in);
+        InputStream in = new BufferedInputStream(new FileInputStream(gongFile));
+        clip = AudioSystem.getClip();
+        clip.open(AudioSystem.getAudioInputStream(in));
     }
 
-    public static void dragonFire() throws IOException {
-        String dr = "./resources/audio/DragonFire.wav";
-        InputStream in = new FileInputStream(dr);
-        AudioStream audioStream2 = new AudioStream(in);
-
+    public static void dragonFire() throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         if (Game.stateSound == StateSound.ON) {
-        AudioPlayer.player.start(audioStream2);
+            String dr = "./resources/audio/DragonFire.wav";
+            InputStream in = new BufferedInputStream(new FileInputStream(dr));
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(in));
+            clip.start();
         }
     }
 
-    public static void enemyDie() throws IOException {
-        String enDie = "./resources/audio/EnemyDie.wav";
-        InputStream in = new FileInputStream(enDie);
-        AudioStream audioStream3 = new AudioStream(in);
-
+    public static void enemyDie() throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         if (Game.stateSound == StateSound.ON) {
-        AudioPlayer.player.start(audioStream3);
+            String enDie = "./resources/audio/EnemyDie.wav";
+            InputStream in = new BufferedInputStream(new FileInputStream(enDie));
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(in));
+            clip.start();
         }
     }
 
-    public static void dragonRoar() throws IOException {
-        String dragonRoar = "./resources/audio/DragonRoar.wav";
-        InputStream in = new FileInputStream(dragonRoar);
-        AudioStream audioStream4 = new AudioStream(in);
-
+    public static void dragonRoar() throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         if (Game.stateSound == StateSound.ON) {
-        AudioPlayer.player.start(audioStream4);
+            String dragonRoar = "./resources/audio/DragonRoar.wav";
+            InputStream in = new BufferedInputStream(new FileInputStream(dragonRoar));
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(in));
+            clip.start();
         }
     }
 
-    public static void bossDies() throws IOException {
-        String bossDies = "./resources/audio/BossDies.wav";
-        InputStream in  = new FileInputStream(bossDies);
-        AudioStream audioStream5 = new AudioStream(in);
-
+    public static void bossDies() throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         if (Game.stateSound == StateSound.ON) {
-            AudioPlayer.player.start(audioStream5);
+            String bossDies = "./resources/audio/BossDies.wav";
+            InputStream in  = new BufferedInputStream(new FileInputStream(bossDies));
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(in));
+            clip.start();
         }
     }
 
-    public static void bossShoots() throws IOException {
-        String bossShoots = "./resources/audio/BossFire.wav";
-        InputStream in  = new FileInputStream(bossShoots);
-        AudioStream audioStream5 = new AudioStream(in);
-
+    public static void bossShoots() throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         if (Game.stateSound == StateSound.ON) {
-            AudioPlayer.player.start(audioStream5);
+            String bossShoots = "./resources/audio/BossFire.wav";
+            InputStream in  = new BufferedInputStream(new FileInputStream(bossShoots));
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(in));
+            clip.start();
         }
     }
 
-    public static void bossShotHit() throws IOException {
-        String bossShotHit = "./resources/audio/BossShotHit.wav";
-        InputStream in  = new FileInputStream(bossShotHit);
-        AudioStream audioStream5 = new AudioStream(in);
-
+    public static void bossShotHit() throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         if (Game.stateSound == StateSound.ON) {
-            AudioPlayer.player.start(audioStream5);
+            String bossShotHit = "./resources/audio/BossShotHit.wav";
+            InputStream in  = new BufferedInputStream(new FileInputStream(bossShotHit));
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(in));
+            clip.start();
         }
     }
 }

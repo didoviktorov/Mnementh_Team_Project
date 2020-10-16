@@ -12,6 +12,8 @@ import interfaces.FriendlyEntity;
 import interfaces.HealthRestorer;
 import spitesheets.SpriteSheet;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -110,7 +112,7 @@ public class Player extends DefaultObject implements FriendlyEntity {
             if (Physics.collision(this, tempEnt)) {
                 try {
                     Music.enemyDie();
-                } catch (IOException e) {
+                } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
                     e.printStackTrace();
                 }
 
@@ -132,7 +134,7 @@ public class Player extends DefaultObject implements FriendlyEntity {
 
                 try {
                     Music.bossShotHit();
-                } catch (IOException e) {
+                } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
                     e.printStackTrace();
                 }
 

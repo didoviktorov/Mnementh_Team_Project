@@ -10,6 +10,8 @@ import interfaces.BossEntity;
 import interfaces.BossShotEntity;
 import spitesheets.SpriteSheet;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -182,7 +184,7 @@ public class BossLevelTwo extends DefaultObject implements BossEntity {
             this.controller.addEntity(new BossShot(super.getX(), super.getY() + SHOT_OFFSET, direction, this.game, this.damage));
             try {
                 Music.bossShoots();
-            } catch (IOException e) {
+            } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
                 e.printStackTrace();
             }
         }

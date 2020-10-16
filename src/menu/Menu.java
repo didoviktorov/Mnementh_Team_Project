@@ -4,10 +4,9 @@ import app.Game;
 import audio.Music;
 import enums.GameState;
 import enums.StateSound;
-import sun.audio.AudioPlayer;
 
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Menu {
@@ -79,12 +78,12 @@ public class Menu {
             //Sound ON/OFF
             if (Game.stateSound == StateSound.ON) {
                 graphics.drawString("SOUND ON", this.soundButton.x + 19, this.soundButton.y + 35);
-                AudioPlayer.player.start(Music.audioStream);
+                Music.clip.start();
             }
 
             if (Game.stateSound == StateSound.OFF) {
                 graphics.drawString("SOUND OFF", this.soundButton.x + 19, this.soundButton.y + 35);
-                AudioPlayer.player.stop(Music.audioStream);
+                Music.clip.stop();
             }
 
             g2d.draw(this.soundButton);

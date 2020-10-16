@@ -16,6 +16,8 @@ import models.Battleground;
 import models.Fire;
 import models.Player;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -229,7 +231,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     //Movement
-    public void keyPressed(KeyEvent k) throws IOException {
+    public void keyPressed(KeyEvent k) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
         int key = k.getKeyCode();
 
         int direction;

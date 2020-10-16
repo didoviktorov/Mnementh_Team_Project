@@ -5,6 +5,8 @@ import audio.Music;
 import enums.GameState;
 import enums.StateSound;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -34,7 +36,7 @@ public class MouseInput implements MouseListener {
                     //Pressed Play Button
                     try {
                         Music.dragonRoar();
-                    } catch (IOException e1) {
+                    } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e1) {
                         e1.printStackTrace();
                     }
                     Game.gameState = GameState.GAME_LEVEL_ONE;

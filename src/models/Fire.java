@@ -9,6 +9,8 @@ import interfaces.EnemyEntity;
 import interfaces.FriendlyEntity;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -110,7 +112,7 @@ public class Fire extends DefaultObject implements FriendlyEntity {
             if(tempEnt.getHealth() <= 0) {
                 try {
                     Music.bossDies();
-                } catch (IOException e) {
+                } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
                     e.printStackTrace();
                 }
 
@@ -126,7 +128,7 @@ public class Fire extends DefaultObject implements FriendlyEntity {
             if (Physics.collision(this, tempEnt)){
                 try {
                     Music.enemyDie();
-                } catch (IOException e) {
+                } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
                     e.printStackTrace();
                 }
 
